@@ -1,0 +1,1 @@
+ // var featureElement = document.getElementById("featuretext");
