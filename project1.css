@@ -6,7 +6,7 @@ body {
 }
 
 .PG1 {
-    padding: 0;
+    padding: 5px;
     margin: 0;
     display: flex;
     width: 99vw;
