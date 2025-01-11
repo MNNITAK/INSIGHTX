@@ -7,7 +7,20 @@
 // }
 // z.addEventListener('click', f); // Attach the event listener for the 'click' event
 
+// Initialize Lenis
+const lenis = new Lenis({
 
+    duration:1.2
+});
+
+// Use requestAnimationFrame to colntinuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+raf();
 
 var pos = document.documentElement; // Correctly accessing the root element
 pos.addEventListener("mousemove", (e) => {
@@ -86,7 +99,43 @@ let about=document.getElementsByClassName('about')[0];
 
 
 
+let mainclub=document.getElementsByClassName("mainclub")[0];
+let clubimage=document.getElementsByClassName("clubimage")[0];
+console.log(clubimage)
+let clubs=document.querySelectorAll(".club");
 
+mainclub.addEventListener("mouseenter",()=>{
+    clubimage.style.display="block";
+
+})
+
+mainclub.addEventListener("mouseleave",()=>{
+    clubimage.style.display="none";
+
+})
+clubs.forEach((e)=>{
+    e.addEventListener("mouseenter",()=>{
+        let t=e.getAttribute("image")
+        console.log(t)
+        clubimage.style.backgroundImage=`url(${t})`
+
+    })
+
+})
+
+
+let next = document.querySelector('.next')
+let prev = document.querySelector('.prev')
+
+next.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').appendChild(items[0])
+})
+
+prev.addEventListener('click', function(){
+    let items = document.querySelectorAll('.item')
+    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+})
 
 
 
